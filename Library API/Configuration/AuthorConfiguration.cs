@@ -1,0 +1,21 @@
+﻿using Library_API.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace LibraryAPI.Configurations
+{
+    public class AuthorConfiguration : IEntityTypeConfiguration<Author>
+    {
+        public void Configure(EntityTypeBuilder<Author> builder)
+        {
+            builder.HasKey(a => a.Id);
+
+            builder.Property(a => a.Name)
+                   .IsRequired()
+                   .HasMaxLength(100);
+
+            builder.Property(a => a.Country)
+                   .HasMaxLength(100);
+        }
+    }
+}
